@@ -11,20 +11,24 @@ public class Appointment {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "user_id")
-    private int userId;
+    // Changed from int userId to String username
+    @Column(name = "user_name") // ✅ Match with DB column
+    private String username;
 
-    @Column(name = "vehicle_id")
-    private int vehicleId;
+    @Column(name = "vehicle_brand")
+    private String vehicleBrand;
 
-    @Column(name = "service_id")
-    private int serviceId;
+    @Column(name = "vehicle_model")
+    private String vehicleModel;
 
-    @Column(name = "center_id")
-    private int centerId;
+    @Column(name = "service_name")
+    private String serviceName;
 
-    @Column(name = "mechanic_id")
-    private int mechanicId;
+    @Column(name = "center_name")
+    private String centerName;
+
+    @Column(name = "mechanic_name")
+    private String mechanicName;
 
     @Column(name = "appointment_time")
     private String appointmentTime;
@@ -35,13 +39,15 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(int id, int userId, int vehicleId, int serviceId, int centerId, int mechanicId, String appointmentTime, int status) {
+    public Appointment(int id, String username, String vehicleBrand, String vehicleModel, String serviceName,
+                       String centerName, String mechanicName, String appointmentTime, int status) {
         this.id = id;
-        this.userId = userId;
-        this.vehicleId = vehicleId;
-        this.serviceId = serviceId;
-        this.centerId = centerId;
-        this.mechanicId = mechanicId;
+        this.username = username;
+        this.vehicleBrand = vehicleBrand;
+        this.vehicleModel = vehicleModel;
+        this.serviceName = serviceName;
+        this.centerName = centerName;
+        this.mechanicName = mechanicName;
         this.appointmentTime = appointmentTime;
         this.status = status;
     }
@@ -50,24 +56,28 @@ public class Appointment {
         return id;
     }
 
-    public int getUserId() {
-        return userId;
+    public String getUsername() {
+        return username;
     }
 
-    public int getVehicleId() {
-        return vehicleId;
+    public String getVehicleBrand() {
+        return vehicleBrand;
     }
 
-    public int getServiceId() {
-        return serviceId;
+    public String getVehicleModel() {
+        return vehicleModel;
     }
 
-    public int getCenterId() {
-        return centerId;
+    public String getServiceName() {
+        return serviceName;
     }
 
-    public int getMechanicId() {
-        return mechanicId;
+    public String getCenterName() {
+        return centerName;
+    }
+
+    public String getMechanicName() {
+        return mechanicName;
     }
 
     public String getAppointmentTime() {
@@ -82,24 +92,28 @@ public class Appointment {
         this.id = id;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setVehicleId(int vehicleId) {
-        this.vehicleId = vehicleId;
+    public void setVehicleBrand(String vehicleBrand) {
+        this.vehicleBrand = vehicleBrand;
     }
 
-    public void setServiceId(int serviceId) {
-        this.serviceId = serviceId;
+    public void setVehicleModel(String vehicleModel) {
+        this.vehicleModel = vehicleModel;
     }
 
-    public void setCenterId(int centerId) {
-        this.centerId = centerId;
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
     }
 
-    public void setMechanicId(int mechanicId) {
-        this.mechanicId = mechanicId;
+    public void setCenterName(String centerName) {
+        this.centerName = centerName;
+    }
+
+    public void setMechanicName(String mechanicName) {
+        this.mechanicName = mechanicName;
     }
 
     public void setAppointmentTime(String appointmentTime) {

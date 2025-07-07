@@ -34,8 +34,25 @@ public class AppointmentService {
         repo.deleteById(id);
     }
 
-    // 📖 Get appointments by user ID
-    public List<Appointment> getAppointmentsByUser(int userId) {
-        return repo.findByUserId(userId);
+    // 📖 Get appointments by username (String)
+    public List<Appointment> getAppointmentsByUser(String username) {
+        return repo.findByUsername(username);
     }
+
+    // 🛠️ Admin updates only the status
+    public Appointment updateStatus(int id, int status) {
+        Optional<Appointment> existing = repo.findById(id);
+        if (existing.isPresent()) {
+            Appointment a = existing.get();
+            a.setStatus(status); // ✅ Update only the status
+            return repo.save(a);
+        }
+        return null;
+    }
+
+    public List<Appointment> getAllAppointments() {
+        return repo.findAll();  // assuming you have JPA repository
+    }
+
+
 }

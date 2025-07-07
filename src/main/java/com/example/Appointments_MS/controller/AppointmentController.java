@@ -32,9 +32,22 @@ public class AppointmentController {
         service.cancelAppointment(id);
     }
 
-    // 📖 Get appointment history for a user
-    @GetMapping("/appointments/{userId}")
-    public List<Appointment> getUserAppointments(@PathVariable int userId) {
-        return service.getAppointmentsByUser(userId);
+    // 📖 Get appointment history for a user by username (String)
+    @GetMapping("/appointments/user/{username}")
+    public List<Appointment> getUserAppointments(@PathVariable String username) {
+        return service.getAppointmentsByUser(username);
     }
+
+    // 🛠️ Admin updates appointment status
+    @PutMapping("/appointments/status/{id}")
+    public Appointment updateAppointmentStatus(@PathVariable int id, @RequestParam int status) {
+        return service.updateStatus(id, status);
+    }
+
+    // 📋 Get all appointments (for admin)
+    @GetMapping("/appointments")
+    public List<Appointment> getAllAppointments() {
+        return service.getAllAppointments();
+    }
+
 }
