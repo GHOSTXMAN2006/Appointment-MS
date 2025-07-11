@@ -8,6 +8,6 @@ import java.util.List;
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Integer> {
 
-    // 📖 Get all appointments for a username (string)
+    // Get all appointments for a username (string)
     List<Appointment> findByUsername(String username);
 }

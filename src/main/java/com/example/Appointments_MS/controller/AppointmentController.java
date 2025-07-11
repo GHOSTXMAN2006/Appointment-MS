@@ -14,37 +14,37 @@ public class AppointmentController {
     @Autowired
     private AppointmentService service;
 
-    // 🎯 Book a new appointment
+    //  Book a new appointment
     @PostMapping("/appointments")
     public Appointment bookAppointment(@RequestBody Appointment a) {
         return service.bookAppointment(a);
     }
 
-    // 🔁 Update/reschedule an appointment
+    //  Update/reschedule an appointment
     @PutMapping("/appointments/{id}")
     public Appointment updateAppointment(@PathVariable int id, @RequestBody Appointment a) {
         return service.updateAppointment(id, a);
     }
 
-    // ❌ Cancel an appointment
+    //  Cancel an appointment
     @DeleteMapping("/appointments/{id}")
     public void cancelAppointment(@PathVariable int id) {
         service.cancelAppointment(id);
     }
 
-    // 📖 Get appointment history for a user by username (String)
+    //  Get appointment history for a user by username (String)
     @GetMapping("/appointments/user/{username}")
     public List<Appointment> getUserAppointments(@PathVariable String username) {
         return service.getAppointmentsByUser(username);
     }
 
-    // 🛠️ Admin updates appointment status
+    //  Admin updates appointment status
     @PutMapping("/appointments/status/{id}")
     public Appointment updateAppointmentStatus(@PathVariable int id, @RequestParam int status) {
         return service.updateStatus(id, status);
     }
 
-    // 📋 Get all appointments (for admin)
+    //  Get all appointments (for admin)
     @GetMapping("/appointments")
     public List<Appointment> getAllAppointments() {
         return service.getAllAppointments();

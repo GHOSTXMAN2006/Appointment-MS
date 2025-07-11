@@ -12,7 +12,7 @@ public class Appointment {
     private int id;
 
     // Changed from int userId to String username
-    @Column(name = "user_name") // ✅ Match with DB column
+    @Column(name = "user_name") //  Match with DB column
     private String username;
 
     @Column(name = "vehicle_brand")

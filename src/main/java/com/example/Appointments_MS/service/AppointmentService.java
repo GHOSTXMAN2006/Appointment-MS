@@ -14,12 +14,12 @@ public class AppointmentService {
     @Autowired
     private AppointmentRepository repo;
 
-    // 📥 Book a new appointment
+    // Book a new appointment
     public Appointment bookAppointment(Appointment a) {
         return repo.save(a);
     }
 
-    // 🔁 Update/reschedule appointment
+    // Update/reschedule appointment
     public Appointment updateAppointment(int id, Appointment a) {
         Optional<Appointment> existing = repo.findById(id);
         if (existing.isPresent()) {
@@ -29,22 +29,22 @@ public class AppointmentService {
         return null;
     }
 
-    // ❌ Cancel appointment
+    // Cancel appointment
     public void cancelAppointment(int id) {
         repo.deleteById(id);
     }
 
-    // 📖 Get appointments by username (String)
+    // Get appointments by username (String)
     public List<Appointment> getAppointmentsByUser(String username) {
         return repo.findByUsername(username);
     }
 
-    // 🛠️ Admin updates only the status
+    // Admin updates only the status
     public Appointment updateStatus(int id, int status) {
         Optional<Appointment> existing = repo.findById(id);
         if (existing.isPresent()) {
             Appointment a = existing.get();
-            a.setStatus(status); // ✅ Update only the status
+            a.setStatus(status); // Update only the status
             return repo.save(a);
         }
         return null;
